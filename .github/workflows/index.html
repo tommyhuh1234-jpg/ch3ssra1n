@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="ch3ssra1n">
+<title>ch3ssra1n</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=JetBrains+Mono:wght@600&display=swap">
+<style>
+:root{--text:#fff;--dim:rgba(255,255,255,.55);--card:rgba(48,48,48,.68);--line:rgba(255,255,255,.14);--ok:#7dffc1;color-scheme:dark;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--text:#fff}}
+:root[data-theme="dark"]{--text:#fff}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;margin:0;background:#111}
+body{color:var(--text);font:17px/1.3 -apple-system,"SF Pro Text","Helvetica Neue",Arial,sans-serif;display:flex;justify-content:center}
+.app{position:relative;width:100%;max-width:430px;height:100%;overflow:hidden;padding:0 12.5% 20px;display:flex;flex-direction:column;
+background:
+radial-gradient(ellipse 70% 38% at 0% 45%,rgba(255,255,255,.42) 0%,rgba(255,255,255,0) 70%),
+radial-gradient(ellipse 80% 30% at 100% 100%,rgba(255,255,255,.3) 0%,rgba(255,255,255,0) 70%),
+radial-gradient(ellipse 90% 25% at 100% 0%,#000 0%,rgba(0,0,0,0) 80%),
+linear-gradient(180deg,#050505 0%,#1c1c1c 45%,#0c0c0c 75%,#2a2a2a 100%)}
+.head{margin-top:20%}
+.logo{font:600 55px/1 Poppins,"Avenir Next","Nunito",system-ui,sans-serif;letter-spacing:-2px;margin:0 0 14px}
+.head p{margin:0;font-size:19px;line-height:1.5}
+.head .d{color:var(--dim)}
+.card{margin-top:20%;margin-left:-8%;margin-right:-8%;background:var(--card);border-radius:34px;padding:6px 28px;-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);position:relative;min-height:300px}
+.item{display:flex;align-items:center;gap:14px;width:100%;background:none;border:0;color:var(--text);font:inherit;font-size:22px;text-align:left;padding:30px 0;border-bottom:1px solid var(--line)}
+.item:last-child{border-bottom:0}
+.item svg{width:30px;height:30px;flex:none;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.item .ch{margin-left:auto;width:22px;height:22px;opacity:.7}
+.item[disabled]{color:var(--dim)}
+.spacer{flex:1}
+.jb{display:flex;align-items:center;justify-content:center;gap:12px;width:116%;margin-left:-8%;border:0;border-radius:22px;background:rgba(48,48,48,.68);color:var(--text);font:inherit;font-size:24px;padding:24px;-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px)}
+.jb svg{width:30px;height:30px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.jb[disabled]{color:var(--dim)}
+.note{text-align:center;font-size:11px;color:var(--dim);margin:10px 0 0}
+.jsheet{position:absolute;left:3%;right:3%;bottom:0;top:27%;z-index:6;background:rgba(22,24,24,.97);border-radius:34px 34px 0 0;transform:translateY(105%);transition:transform .35s;display:flex;flex-direction:column;padding:26px 16px 0}
+.jsheet.open{transform:none}
+.jt{display:flex;align-items:center;justify-content:center;gap:14px;font-size:24px;font-weight:600;margin-bottom:22px}
+.jt svg{width:34px;height:34px;stroke:currentColor;fill:none;stroke-width:2.2;stroke-linecap:round}
+.logv{flex:1;overflow:auto;font:600 14px/1.5 "JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;color:#f4f4f4;white-space:pre-wrap;word-break:break-all;padding-bottom:calc(20px + env(safe-area-inset-bottom,0px))}
+
+.logv div::before{content:"> "}
+.sheet{position:absolute;inset:0;z-index:5;padding:60px 9% 24px;transform:translateY(100%);transition:transform .3s;
+background:linear-gradient(180deg,#000,#1c1c1c 60%,#0c0c0c)}
+.sheet.open{transform:none}
+.ssheet{background:radial-gradient(ellipse 60% 40% at 0% 45%,rgba(255,255,255,.22) 0%,rgba(255,255,255,0) 70%),linear-gradient(180deg,#000 0%,#0d0d0d 40%,#050505 75%,#1a1a1a 100%);padding:0}
+.scard{position:absolute;left:7%;right:7%;top:15%;bottom:15%;overflow:auto;border-radius:34px;padding:34px 13% 28px;background:linear-gradient(160deg,#3a3a3a,#2a2a2a 45%,#303030)}
+.stitle{text-align:center;font-size:19px;font-weight:500}
+.sline{height:1px;background:rgba(255,255,255,.13);margin:18px -4% 0 8%}
+.sec{font-size:13px;letter-spacing:.6px;text-transform:uppercase;color:rgba(255,255,255,.55);margin:36px 0 10px}
+.srow,.ssheet .row{display:flex;justify-content:space-between;align-items:center;font-size:17px;padding:12px 0;border:0}
+.ssheet .row small{font-size:12px}
+.dim{color:rgba(255,255,255,.5)}
+.link{background:none;border:0;padding:12px 0 0;color:#fff;font:inherit;font-size:17px}
+.ssheet [data-close]{display:none}
+.ssheet #reset{color:#fff;font-size:17px}
+.sheet h2{font:600 30px Poppins,system-ui,sans-serif;margin:0 0 10px}
+.row{display:flex;justify-content:space-between;align-items:center;padding:17px 0;border-bottom:1px solid var(--line);font-size:18px}
+.row small{display:block;color:var(--dim);font-size:13px}
+.sw{appearance:none;-webkit-appearance:none;width:51px;height:31px;border-radius:16px;background:rgba(255,255,255,.2);position:relative;transition:.2s;flex:none}
+.sw::after{content:"";position:absolute;top:2px;left:2px;width:27px;height:27px;border-radius:50%;background:#fff;transition:.2s}
+.sw:checked{background:#9a9a9a}.sw:checked::after{left:22px}
+.back{background:none;border:0;color:var(--text);font:inherit;font-size:17px;padding:0;margin-bottom:18px}
+.black{position:absolute;inset:0;background:#000;z-index:9;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:34px;opacity:0;pointer-events:none;transition:opacity .35s}
+.black.on{opacity:1;pointer-events:auto}
+.black span{font:400 84px/1 -apple-system,"SF Pro Display",sans-serif;color:#fff;opacity:0;transition:opacity .6s}.black.logo span{opacity:1}.black .pbar{width:150px;height:4px;border-radius:2px;background:rgba(255,255,255,.25);overflow:hidden;opacity:0;transition:opacity .6s}.black.logo .pbar{opacity:1}.black .pbar i{display:block;height:100%;width:0;background:#fff;border-radius:2px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="head">
+    <h1 class="logo">ch3ssra1n</h1>
+    <p>iOS 27.2 | A12 - A19, M1</p>
+    <p class="d">by kn1ght, r00k<br>UI by b1shop</p>
+  </div>
+
+  <div class="card">
+    <button class="item" id="settings"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>Settings<svg class="ch" viewBox="0 0 24 24"><path d="M9 4l8 8-8 8"/></svg></button>
+    <button class="item" id="respring" disabled><svg viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.5-5.8"/><path d="M20 4v5h-5"/></svg>Restart SpringBoard</button>
+    <button class="item" id="reboot" disabled><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5"/><path d="M15.5 9.5A4.5 4.5 0 1 0 16 13"/><path d="M16 8v2.5h-2.5"/></svg>Reboot Userspace</button>
+    <button class="item" id="credits"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5"/><path d="M12 11v6M12 7.5v.1"/></svg>Credits<svg class="ch" viewBox="0 0 24 24"><path d="M9 4l8 8-8 8"/></svg></button>
+    
+  </div>
+
+  <div class="spacer"></div>
+  <button class="jb" id="go"><svg viewBox="0 0 24 24" id="lock"><rect x="3.5" y="11" width="12" height="9.5" rx="2"/><path d="M7 11V7.5a4 4 0 0 1 8 0"/></svg><span id="gotxt">Jailbreak</span></button>
+  
+
+  <div class="sheet ssheet" id="sheetS"><div class="scard"><div class="stitle">Settings</div><div class="sline"></div><div class="sec">Customization</div><div class="srow"><span>Theme</span><span class="dim">Monochrome ›</span></div><div class="sec">Boot Logo</div><div class="srow"><span>Enabled</span><input class="sw" type="checkbox" checked></div><div class="srow"><span>Custom Boot Logo</span><input class="sw" type="checkbox" checked></div><button class="link">Select Image</button><div class="sec">Jailbreak</div>
+    <button class="back" data-close>‹ Back</button>
+    
+    <div class="row"><div>Tweak Injection<small>Load tweaks into apps</small></div><input class="sw" type="checkbox" checked></div>
+    <div class="row"><div>Verbose Logs<small>Show extra detail while jailbreaking</small></div><input class="sw" id="verbose" type="checkbox"></div>
+    
+    
+    <div class="row"><div>Remove Jailbreak<small>Restore stock state</small></div><button class="back" id="reset" style="margin:0">Remove</button></div>
+  </div>
+  </div><div class="sheet" id="sheetC">
+    <button class="back" data-close>‹ Back</button>
+    <h2>Credits</h2>
+    <div class="row"><div>kn1ght<small>Main developer</small></div></div>
+    <div class="row"><div>r00k<small>Exploit and bypass work</small></div></div>
+    <div class="row"><div>b1shop<small>User interface</small></div></div>
+    
+  </div>
+  <div class="jsheet" id="jsheet"><div class="jt"><svg viewBox="0 0 34 34"><path d="M4 8h26M4 14h26M4 20h26M4 26h26" stroke-dasharray="2 2"/></svg>Jailbreaking</div><div class="logv" id="log" aria-live="polite"></div></div>
+  <div class="black" id="black"><span>&#xF8FF;</span><div class="pbar"><i id="pfill"></i></div></div>
+</div>
+
+<script>
+(function(){
+  var $=function(i){return document.getElementById(i)};
+  var go=$('go'),gotxt=$('gotxt'),log=$('log'),busy=false,done=false;
+  var steps=['Checking device and iOS version','Locating kernel base','Bypassing PAC','Patching sandbox','Escalating privileges','Bypassing PPL','Mounting preboot','Installing Sileo and libhooker','Loading launch daemons','Starting userspace reboot'];
+  var extra=['kbase = 0xfffffff007004000','slide = 0x2a14000','pid 1: launchd ok','proc_ro patched','trustcache injected'];
+  function add(t,c){var d=document.createElement('div');if(c)d.className=c;d.textContent=t;log.appendChild(d);log.scrollTop=log.scrollHeight}
+  function wait(ms){return new Promise(function(r){setTimeout(r,ms)})}
+  function black(ms,cb){var b=$('black'),f=$('pfill');f.style.transition='none';f.style.width='0';b.classList.add('on');setTimeout(function(){b.classList.add('logo');f.style.transition='width '+((ms-1500)/1000)+'s linear';f.style.width='100%'},900);setTimeout(function(){
+    // On the real app this quits the process once the animation ends,
+    // standing in for the respring (no app can actually restart the device/UI).
+    if(window.webkit&&window.webkit.messageHandlers&&window.webkit.messageHandlers.native){
+      window.webkit.messageHandlers.native.postMessage('exit');
+    }else{
+      b.classList.remove('logo');b.classList.remove('on');if(cb)cb();
+    }
+  },ms-600);}
+  function setReady(on){$('respring').disabled=!on;$('reboot').disabled=!on}
+  async function stream(){
+    var hx=function(n){var s='';while(n--)s+='0123456789abcdef'[Math.floor(Math.random()*16)];return s};
+    var pre='/private/preboot/'+hx(64).toUpperCase()+'/ch3ssra1n-FoEiJ1/procursus';
+    var v=$('verbose').checked;
+    var L=[['[ch3ssra1n] Jailbreak started',500],['Checking device and iOS version... ok',500],['Locating kernel base... ok',600]];
+    if(v)L.push(['kbase = 0xfffffff0'+hx(8)+', slide = 0x'+hx(7),300]);
+    L.push(['Bypassing PAC... ok',600],['Patching sandbox... ok',600],['Escalating privileges... ok',600],['Bypassing PPL... ok',700],['Mounting preboot... ok',500],['Extracting bootstrap...',900]);
+    ['{','    DTPlatformVersion = "27.2";','    DTSDKBuild = 24C5071a;','    DTSDKName = "iphoneos27.2.internal";','    DTXcode = 2700;','    DTXcodeBuild = 27A1234m;','    DarwinBuilderVersion = "15.0";','    DarwinVariant = RELEASE;','    NSHumanReadableCopyright = "Copyright 2021-2026 Apple Inc. All rights reserved.";','};','"main-executable" = "file://'+pre+'/basebin/gen/dyld.inflight";','    source = embedded;','    unique = {length = 20, bytes = 0x'+hx(40)+'};','}'].forEach(function(t){L.push([t,90])});
+    L.push(['[ch3ssra1n][trustcache] launchd dyld publication verification status=0 platform=1',350],['[dyldhook] signature attach failed fd=3 cmd=97 path='+pre+'/usr/lib/libiosexec.1.dylib checked-in=1 server-port=1',350],['[dyldhook] trust published fd=3 cmd=97 retry=0',350]);
+    for(var k=0;k<(v?9:5);k++)L.push(['[litehook] hook ready source=0x1f0f'+hx(5)+' target=0x1007'+hx(5)+' protection=0x5',160]);
+    L.push(['Finalize bootstrap...',900],['Finalized bootstrap...',700]);
+    for(var i=0;i<L.length;i++){add(L[i][0]);await wait(L[i][1]*(0.6+Math.random()*0.8))}
+    await wait(800);
+  }
+  async function run(){
+    if(busy)return;busy=true;go.disabled=true;gotxt.textContent='Jailbreaking…';
+    log.innerHTML='';$('jsheet').classList.add('open');await wait(450);await stream();
+    var v=$('verbose').checked;
+    for(var i=0;i<0;i++){
+      add('['+(i+1)+'/'+steps.length+'] '+steps[i]+'…');
+      if(v&&i%2)add('  '+extra[i%extra.length]);
+      await wait(500+Math.random()*700);
+      if(i===5&&Math.random()<0.3){add('  race lost, retrying','err');await wait(800)}
+      add('  done','ok');
+    }
+    await wait(500);
+    $('jsheet').classList.remove('open');
+    gotxt.textContent='Jailbroken';go.disabled=true;setReady(true);
+    $('lock').innerHTML='<rect x="3.5" y="11" width="12" height="9.5" rx="2"/><path d="M7 11V7.5a4 4 0 0 1 8 0V11"/>';
+    busy=false;done=true;
+  }
+  go.addEventListener('click',run);
+  $('respring').addEventListener('click',function(){black(4500)});
+  $('reboot').addEventListener('click',function(){black(7000)});
+  $('settings').addEventListener('click',function(){$('sheetS').classList.add('open')});
+  $('credits').addEventListener('click',function(){$('sheetC').classList.add('open')});
+  $('sheetS').addEventListener('click',function(e){if(e.target===this)this.classList.remove('open')});
+  document.querySelectorAll('[data-close]').forEach(function(b){b.addEventListener('click',function(){b.parentNode.classList.remove('open')})});
+  $('reset').addEventListener('click',function(){
+    done=false;busy=false;go.disabled=false;gotxt.textContent='Jailbreak';setReady(false);
+    $('lock').innerHTML='<rect x="3.5" y="11" width="12" height="9.5" rx="2"/><path d="M7 11V7.5a4 4 0 0 1 8 0"/>';
+    $('sheetS').classList.remove('open');
+  });
+})();
+</script>
+</body>
+</html>
